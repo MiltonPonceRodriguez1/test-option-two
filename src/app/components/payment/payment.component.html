@@ -1,0 +1,105 @@
+<div class="payment-card">
+  <mat-card class="example-card">
+    
+    <mat-card-content>
+      <!-- Preview Credit card current -->
+      <p class="font-white">Current credit card</p>
+      <app-credit-card 
+        [userName]="creditCard.userName" 
+        [numberCard]="creditCard.numberCard"
+      />
+
+      <!-- <img mat-card-image class="img-card-credit" src="./assets/img/svg/card.svg" alt="card-credit"> -->
+
+
+      <!-- Form Credit Card -->
+      <form #paymentForm="ngForm" (ngSubmit)="onSubmit()" class="mt-1-5">
+
+        <!-- Input Name User Credit Card -->
+        <div>
+          <p class="font-white">Name of card holder</p>
+          <mat-form-field class="full-width-input">
+            <input matInput name="userName" #userName="ngModel" [(ngModel)]="creditCard.userName">
+            <small *ngIf="creditCard.userName.length >= 50 || (!userName.valid && userName.touched)" class="invalid-value">
+              The name isn't valid, max 50 chars.
+            </small>
+          </mat-form-field>
+        </div>
+        <!-- End Input Name User Credit Card -->
+
+
+        <!-- Input Number Credit Card -->
+        <div>
+          <p class="font-white">Credit card number</p>
+          <mat-form-field class="full-width-input second">
+            <input matInput name="numberCard" #numberCard="ngModel" [(ngModel)]="creditCard.numberCard" maxlength="19">
+            <mat-icon matSuffix class="cards-icon"><img src="./assets/img/svg/cards.svg" alt=""></mat-icon>
+            
+            <small *ngIf="creditCard.numberCard.length <= 18 || (!numberCard.valid && numberCard.touched)" class="invalid-value">
+              The card number isn't valid, min 16 numbers.
+            </small>
+          </mat-form-field>
+        </div>
+        <!-- End Input Number Credit Card -->
+
+        <div style="margin-top: -1rem;">
+          <mat-grid-list cols="2" rowHeight="150px">
+
+            <!-- Input Expiration Credit Card -->
+            <mat-grid-tile>
+              <div class="w-95">
+                <p class="font-white">Expiration</p>
+                <mat-form-field class="full-width-input">
+                  <input matInput name="expiration" #expiration="ngModel" [(ngModel)]="creditCard.expiration" maxlength="5" required>
+                  <small *ngIf="creditCard.expiration.length < 5 || (!expiration.valid && expiration.touched)" class="invalid-value">
+                    The expiration isn't valid.
+                  </small>
+                </mat-form-field>
+              </div>
+            </mat-grid-tile>
+            <!-- End Input Expiration Credit Card -->
+
+            <!-- Input CVV Credit Card -->
+            <mat-grid-tile>
+              <div class="w-95">
+                <p class="font-white" style="display: flex; align-items: center;">
+                  CVV
+                  <mat-icon matSuffix class="icon-info ">info</mat-icon>
+                </p>
+                
+                <mat-form-field class="full-width-input">
+                  <input matInput name="cvv" #cvv="ngModel" [(ngModel)]="creditCard.cvv" maxlength="3" required>
+                  <small *ngIf="creditCard.cvv.toString().length < 3 || (!cvv.valid && cvv.touched)" class="invalid-value">
+                    The CVV isn't valid.
+                  </small>
+                </mat-form-field>
+              </div>
+            </mat-grid-tile>
+            <!-- End Input CVV Credit Card -->
+          </mat-grid-list>
+        </div>
+      </form>
+      <!-- End Form Credit Card -->
+
+
+    </mat-card-content>
+    <mat-card-actions>
+      <div class="container-buttons">
+        <div class="w-full buttons-actions">
+          <button 
+            (click)="onSubmit()"
+            mat-raised-button 
+            class="w-49 btn-payment btn-make-payment" 
+            [disabled]="
+              creditCard.userName.length >= 50 ||
+              creditCard.numberCard.length <= 18 ||
+              creditCard.expiration.length < 5 ||
+              creditCard.cvv.toString().length < 3
+            ">Make Payment</button>
+          <button mat-raised-button class="w-49 btn-payment btn-cancel" color="primary" (click)="onCancel()">Cancel</button>
+        </div>
+
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: #fafafa; }
+
+.container {
+    padding-left: 5rem !important;
+    padding-right: 5rem !important;
+    min-height: calc(100vh - 134px);
+}
+
+.font-white {
+    color: #ffffff !important;
+}
+
+p {
+    font-size: 16px;
+}
+
+input {
+    color: white !important;
+}
+
+.w-full {
+    width: 100%;
+}
+
+.w-95 {
+    width: 95%;
+}
+
+.w-50 {
+    width: 50%;
+}
+
+.w-49 {
+    width: 49%;
+}
+
+.mat-mdc-text-field-wrapper {
+    background-color: #126bc7 !important;
+    border-radius: 0.75rem !important;
+    font-size: 18px;
+}
+
+.second .mat-mdc-text-field-wrapper {
+    background-color: #3e92ec !important;
+}
+
+.mat-mdc-form-field-focus-overlay {
+    background-color: rgba(247, 0, 0, 0.87);
+}
+
+.mt-2 {
+    margin-top: 2rem !important;
+}
+
+.mt-1-5 {
+    margin-top: 1.5rem !important;
+}

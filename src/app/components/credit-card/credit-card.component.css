@@ -1,0 +1,12 @@
+.card-credit{
+    width: 247px;
+    height: 120px;
+    background-color: #3D93EA;
+    padding: 1rem;
+    border-radius: 0.35rem;
+    box-shadow: 1px 1px 3px #474747;
+}
+
+.card-numbers {
+    margin-right: 1.5rem;
+}
